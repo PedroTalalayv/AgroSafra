@@ -1,0 +1,58 @@
+import type { ITalhao } from '../types/ITalhao'
+
+export const talhoesIniciais: ITalhao[] = [
+  {
+    id: 1,
+    nome: 'Talhão Boa Vista',
+    cultura: 'Soja',
+    areaHectares: 120,
+    produtividadeEstimadaSacas: 7200,
+    dataPlantio: '2025-10-15',
+    status: 'Crescimento',
+  },
+  {
+    id: 2,
+    nome: 'Talhão Córrego Fundo',
+    cultura: 'Milho',
+    areaHectares: 85,
+    produtividadeEstimadaSacas: 12750,
+    dataPlantio: '2025-09-20',
+    status: 'Colheita',
+  },
+  {
+    id: 3,
+    nome: 'Talhão Serra Azul',
+    cultura: 'Café',
+    areaHectares: 40,
+    produtividadeEstimadaSacas: 1600,
+    dataPlantio: '2025-11-02',
+    status: 'Plantio',
+  },
+  {
+    id: 4,
+    nome: 'Talhão Pau-Brasil',
+    cultura: 'Cana-de-açúcar',
+    areaHectares: 210,
+    produtividadeEstimadaSacas: 0,
+    dataPlantio: '2025-07-10',
+    status: 'Comercializado',
+  },
+  {
+    id: 5,
+    nome: 'Talhão Rio Claro',
+    cultura: 'Algodão',
+    areaHectares: 95,
+    produtividadeEstimadaSacas: 3800,
+    dataPlantio: '2025-10-28',
+    status: 'Crescimento',
+  },
+  {
+    id: 6,
+    nome: 'Talhão Sete Lagoas',
+    cultura: 'Soja',
+    areaHectares: 160,
+    produtividadeEstimadaSacas: 9600,
+    dataPlantio: '2025-10-05',
+    status: 'Plantio',
+  },
+]
