@@ -34,3 +34,23 @@ body {
 .rodape address {
   font-style: normal;
 }
+
+.card-contador {
+  color: #fff;
+}
+
+.card-contador--verde {
+  background-color: var(--verde-plantio);
+}
+
+.card-contador--terra {
+  background-color: var(--terra);
+}
+
+.card-contador--azul {
+  background-color: #2b6f8f;
+}
+
+.card-contador--amarelo {
+  background-color: #b8860b;
+}
