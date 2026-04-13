@@ -1,4 +1,36 @@
+:root {
+  --verde-plantio: #3f7d3b;
+  --verde-escuro: #2c5c29;
+  --terra: #8b5a2b;
+  --bege-claro: #f6f3ec;
+  --cinza-texto: #4a4a4a;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  background-color: #f6f8f4;
+  background-color: var(--bege-claro);
+  color: var(--cinza-texto);
+}
+
+.cabecalho {
+  background: linear-gradient(135deg, var(--verde-escuro), var(--verde-plantio));
+  color: #fff;
+}
+
+.cabecalho .nav-link:hover {
+  text-decoration: underline;
+}
+
+.barra-lateral {
+  background-color: #fff;
+  border-left: 4px solid var(--verde-plantio);
+}
+
+.rodape {
+  background-color: var(--verde-escuro);
+  color: #fff;
+}
+
+.rodape address {
+  font-style: normal;
 }
