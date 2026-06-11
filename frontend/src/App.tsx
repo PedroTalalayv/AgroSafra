@@ -8,7 +8,7 @@ import TalhaoFormModal from './components/Talhao/TalhaoFormModal'
 import HistoricoModal from './components/Talhao/HistoricoModal'
 import FiltrosBar, { type IFiltros } from './components/Talhao/FiltrosBar'
 import Login from './components/Login/Login'
-import { api, limparSessao, obterSessao, salvarSessao } from './services/api'
+import { api, ErroApi, limparSessao, obterSessao, salvarSessao } from './services/api'
 import type { ISessao, ITalhao, ITalhaoForm } from './types/ITalhao'
 
 /**
@@ -67,8 +67,12 @@ function App() {
   }
 
   async function avancarStatus(id: number) {
-    const atualizado = await api.avancarStatus(id)
-    setTalhoes((anteriores) => anteriores.map((t) => (t.id === id ? atualizado : t)))
+    try {
+      const atualizado = await api.avancarStatus(id)
+      setTalhoes((anteriores) => anteriores.map((t) => (t.id === id ? atualizado : t)))
+    } catch (e) {
+      setErro(e instanceof ErroApi ? e.message : 'Não foi possível avançar o ciclo do talhão.')
+    }
   }
 
   async function salvarTalhao(dados: ITalhaoForm) {
@@ -88,8 +92,12 @@ function App() {
     if (!window.confirm(`Excluir o talhão "${talhao.nome}"? O histórico também será removido.`)) {
       return
     }
-    await api.excluirTalhao(talhao.id)
-    setTalhoes((anteriores) => anteriores.filter((t) => t.id !== talhao.id))
+    try {
+      await api.excluirTalhao(talhao.id)
+      setTalhoes((anteriores) => anteriores.filter((t) => t.id !== talhao.id))
+    } catch (e) {
+      setErro(e instanceof ErroApi ? e.message : 'Não foi possível excluir o talhão.')
+    }
   }
 
   if (!sessao) {
