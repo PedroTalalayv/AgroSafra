@@ -54,3 +54,53 @@ body {
 .card-contador--amarelo {
   background-color: #b8860b;
 }
+
+/* ===== Badges de status com cor própria por etapa do ciclo =====
+   Mesmas cores usadas nos gráficos do dashboard (Graficos.tsx). */
+.badge-status {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-status--plantio {
+  background-color: #5b9bd5;
+  color: #fff;
+}
+
+.badge-status--crescimento {
+  background-color: #3a7d44;
+  color: #fff;
+}
+
+.badge-status--colheita {
+  background-color: #e9b44c;
+  color: #3d2c00;
+}
+
+.badge-status--comercializado {
+  background-color: #8d6e63;
+  color: #fff;
+}
+
+/* ===== Cards de talhão: leve elevação ao passar o mouse ===== */
+.talhao-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.talhao-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ===== Página de login ===== */
+.login-pagina {
+  background: linear-gradient(160deg, var(--verde-escuro) 0%, var(--verde-plantio) 55%, #74a57f 100%);
+}
+
+.login-card {
+  border-radius: 1rem;
+}
+
+.login-logo {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
