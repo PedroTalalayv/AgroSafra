@@ -4,13 +4,16 @@ import { ROTULO_CULTURA, ROTULO_STATUS } from '../../types/ITalhao'
 interface ITalhaoCardProps {
   talhao: ITalhao
   onAvancarStatus: (id: number) => void
+  onEditar: (talhao: ITalhao) => void
+  onExcluir: (talhao: ITalhao) => void
+  onHistorico: (talhao: ITalhao) => void
 }
 
 const classeBadge: Record<StatusSafra, string> = {
-  PLANTIO: 'bg-info text-dark',
-  CRESCIMENTO: 'bg-success',
-  COLHEITA: 'bg-warning text-dark',
-  COMERCIALIZADO: 'bg-secondary',
+  PLANTIO: 'badge-status badge-status--plantio',
+  CRESCIMENTO: 'badge-status badge-status--crescimento',
+  COLHEITA: 'badge-status badge-status--colheita',
+  COMERCIALIZADO: 'badge-status badge-status--comercializado',
 }
 
 function formatarData(iso: string): string {
@@ -18,11 +21,11 @@ function formatarData(iso: string): string {
   return `${dia}/${mes}/${ano}`
 }
 
-function TalhaoCard({ talhao, onAvancarStatus }: ITalhaoCardProps) {
+function TalhaoCard({ talhao, onAvancarStatus, onEditar, onExcluir, onHistorico }: ITalhaoCardProps) {
   const ehComercializado = talhao.status === 'COMERCIALIZADO'
 
   return (
-    <article className={`card h-100 shadow-sm ${ehComercializado ? 'opacity-75' : ''}`}>
+    <article className={`card talhao-card h-100 shadow-sm ${ehComercializado ? 'opacity-75' : ''}`}>
       <div className="card-body d-flex flex-column">
         <div className="d-flex justify-content-between align-items-start mb-2">
           <h3 className="h6 fw-bold mb-0">{talhao.nome}</h3>
@@ -46,13 +49,39 @@ function TalhaoCard({ talhao, onAvancarStatus }: ITalhaoCardProps) {
           </li>
         </ul>
 
-        <button
-          type="button"
-          className="btn btn-sm btn-outline-success mt-auto"
-          onClick={() => onAvancarStatus(talhao.id)}
-        >
-          {ehComercializado ? 'Iniciar nova safra' : 'Avançar ciclo'}
-        </button>
+        <div className="d-flex gap-2 mt-auto">
+          <button
+            type="button"
+            className="btn btn-sm btn-success flex-grow-1"
+            onClick={() => onAvancarStatus(talhao.id)}
+          >
+            {ehComercializado ? 'Nova safra' : 'Avançar ciclo'}
+          </button>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-secondary"
+            title="Histórico de movimentações"
+            onClick={() => onHistorico(talhao)}
+          >
+            🕓
+          </button>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-secondary"
+            title="Editar talhão"
+            onClick={() => onEditar(talhao)}
+          >
+            ✏️
+          </button>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-danger"
+            title="Excluir talhão"
+            onClick={() => onExcluir(talhao)}
+          >
+            🗑️
+          </button>
+        </div>
       </div>
     </article>
   )
