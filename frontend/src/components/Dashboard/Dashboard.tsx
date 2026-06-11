@@ -17,10 +17,10 @@ function Dashboard({ talhoes }: IDashboardProps) {
     0,
   )
 
-  const emPlantio = contarPorStatus(talhoes, 'Plantio')
-  const emCrescimento = contarPorStatus(talhoes, 'Crescimento')
-  const emColheita = contarPorStatus(talhoes, 'Colheita')
-  const comercializados = contarPorStatus(talhoes, 'Comercializado')
+  const emPlantio = contarPorStatus(talhoes, 'PLANTIO')
+  const emCrescimento = contarPorStatus(talhoes, 'CRESCIMENTO')
+  const emColheita = contarPorStatus(talhoes, 'COLHEITA')
+  const comercializados = contarPorStatus(talhoes, 'COMERCIALIZADO')
 
   return (
     <section id="dashboard" className="mb-4">
