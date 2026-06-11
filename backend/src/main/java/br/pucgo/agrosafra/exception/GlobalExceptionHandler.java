@@ -2,6 +2,7 @@ package br.pucgo.agrosafra.exception;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,6 +35,13 @@ public class GlobalExceptionHandler {
             detalhes.put(erro.getField(), erro.getDefaultMessage());
         }
         return new ErroResponse(400, "Dados inválidos", detalhes);
+    }
+
+    /** Corpo JSON malformado ou com tipo errado (ex.: enum inexistente): 400, não 500. */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroResponse tratarJsonInvalido(HttpMessageNotReadableException e) {
+        return new ErroResponse(400, "Corpo da requisição inválido ou malformado");
     }
 
     @ExceptionHandler(BadCredentialsException.class)
