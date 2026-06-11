@@ -1,10 +1,14 @@
+# Front-end
 node_modules
 dist
 dist-ssr
 *.local
 *.tsbuildinfo
-vite.config.js
-vite.config.d.ts
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# Back-end
+backend/target/
 
 .vscode/*
 !.vscode/extensions.json
