@@ -1,5 +1,6 @@
 import type { ITalhao, StatusSafra } from '../../types/ITalhao'
 import CardContador from './CardContador'
+import Graficos from './Graficos'
 
 interface IDashboardProps {
   talhoes: ITalhao[]
@@ -52,6 +53,8 @@ function Dashboard({ talhoes }: IDashboardProps) {
           />
         </div>
       </div>
+
+      <Graficos talhoes={talhoes} />
 
       <div className="row g-3">
         <div className="col-6 col-md-3">
